@@ -19,7 +19,7 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
 ## Github:   
     Create Repo (github, repositories => New)   
         - Dont Make this a shared repo.  
-    Clone the entire starter repo  
+    Clone the entire starter gitHub repo  
         -- Create a new, TOTALLY blank repo in GitHub  (no readme. It will screw things very badly!)
         -- Clone the starter repo (under the hwXX directory) to your local machine
         -- Rename the starter repo if you wish.
@@ -42,6 +42,18 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
         - Click "Pull Requests" in top menu bar (3rd from left).  
         - Click "review Required" in small font below pull request name.  
         - You may approve your own request.  
+    OR .... create blank repos, copy files using Windows Drag and Drop
+        - mkdir hw18/hw18DetailedName 
+        - cd into it
+        - git init
+        - Use windows 10 to copy entire contents of uri repo subdirectory 18-28 mini=project (14-28 mp). 
+            - Note that this is NOT a full repo, so we don't clone it.
+        - In GitHub: create a TOTALLY empty new github repo
+        - Copy its HTTP name
+        - In git, add the remote repo using: git remote add ori CopiedGitHubHttpName
+        - Had to change its name from master to main
+        - Do git add --a (should add all files), git commit -m "msg", git push ori main
+            - If refspec error, be sure you changed master to main.
 
     Create a nice long READ.md file!!  (Modify prior projects.)   
     NPM: Do "npm init --y" BEFORE "npm install" to avoide ENOENT err.
