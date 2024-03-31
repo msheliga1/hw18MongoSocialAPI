@@ -57,10 +57,20 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
             - If refspec error, be sure you changed master to main.
 
     Create a nice long READ.md file!!  (Modify prior projects.)   
+    Determine worrking mp1428 folder: 
+        Read the readme.  Found new code in Main. Found my code in Develop (sounds simple, but took PITA while.)
     NPM: Do "npm init --y" BEFORE "npm install" to avoide ENOENT err.
          Do "npm install" (or "nmp i")
          Do "npm run seed" 
             - Corrected insertOne to create. Fortunately, I did this in class per Andrew!
+         Do "npm run dev". Server came up first time. 
+    Prior Project:
+        Familiarized myself with api/students and api/students/:id routes. Lots and lots of data. 
+        Familiarized myself with other routes and general course has [students], student has [assignments] layout. 
+        Noted that routes exist for creating courses, etc. 
+    BackUp: 
+        Before beginning work, copied entire Main to MainOrig. Also saved a copy of README.md. 
+
     Commit and push files back to gitHub/branch. (For multi-programming: Issue pull request, approve, merge).  
     Deploy code (Settings...CodeAndAnimation->Pages on left, GitHub Pages->Branch->main, save)  
         - Deployed code name always msheliga1/github.io/RepoName !!  
