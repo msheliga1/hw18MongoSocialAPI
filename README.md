@@ -68,7 +68,7 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
         Familiarized myself with api/students and api/students/:id routes. Lots and lots of data. 
         Familiarized myself with other routes and general course has [students], student has [assignments] layout. 
         Noted that routes exist for creating courses, etc. 
-    BackUp: 
+    Be Sure to BackUp: 
         Before beginning work, copied entire Main to MainOrig. Also saved a copy of README.md. 
 
     Commit and push files back to gitHub/branch. (For multi-programming: Issue pull request, approve, merge).  
