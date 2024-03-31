@@ -1,4 +1,7 @@
-# Module 18 Mini-Project: Student Statistics Back-End
+# Mongo-Mongoose Social Network API back-end
+uri bootcamp HW 18 - Social Networking API Back End Only - MJS 4.1.24   
+Michael Sheliga - This repo is for the University of Richmond (URI) coding bootcamp.  
+Starter Code: Started with URI Class Part 18. Class-Student-Assignment 18-28 Mini=Project. 
 
 In this activity, you will start with an existing codebase for a mostly complete application.
 
