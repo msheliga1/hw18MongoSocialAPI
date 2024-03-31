@@ -70,6 +70,8 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
         Noted that routes exist for creating courses, etc. 
     Be Sure to BackUp: 
         Before beginning work, copied entire Main to MainOrig. Also saved a copy of README.md. 
+    Try running new code; 
+        npm i, npm run seed (had to correct insertOne to create), and npm run dev all worked. 
 
     Commit and push files back to gitHub/branch. (For multi-programming: Issue pull request, approve, merge).  
     Deploy code (Settings...CodeAndAnimation->Pages on left, GitHub Pages->Branch->main, save)  
