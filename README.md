@@ -50,8 +50,9 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
             - Note that this is NOT a full repo, so we don't clone it.
         - In GitHub: create a TOTALLY empty new github repo
         - Copy its HTTP name
-        - In git, add the remote repo using: git remote add ori CopiedGitHubHttpName
-        - Had to change its name from master to main
+        - In git, add the remote repo using: git remote add ori CopiedGitHubHttpName (else refspec error). 
+        - Had to change its name from master to main in the 'git init' directory.  
+            - git branch -m <oldname> <newname> (git branch -m master main)
         - Do git add --a (should add all files), git commit -m "msg", git push ori main
             - If refspec error, be sure you changed master to main.
 
