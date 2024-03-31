@@ -58,8 +58,9 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
 
     Create a nice long READ.md file!!  (Modify prior projects.)   
     NPM: Do "npm init --y" BEFORE "npm install" to avoide ENOENT err.
-         Do "npm install inquirer@8.2.4" (with old version) to avoid require error.
-         Do "npm install mySQL2" 
+         Do "npm install" (or "nmp i")
+         Do "npm run seed" 
+            - Corrected insertOne to create. Fortunately, I did this in class per Andrew!
     Commit and push files back to gitHub/branch. (For multi-programming: Issue pull request, approve, merge).  
     Deploy code (Settings...CodeAndAnimation->Pages on left, GitHub Pages->Branch->main, save)  
         - Deployed code name always msheliga1/github.io/RepoName !!  
