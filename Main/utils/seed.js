@@ -22,9 +22,9 @@ connection.once('open', async () => {
   const students = [];
 
   // Loop 20 times -- add students to the students array
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 5; i++) {
     // Get some random assignment objects using a helper function that we imported from ./data
-    const assignments = getRandomAssignments(20);
+    const assignments = getRandomAssignments(4);
 
     const fullName = getRandomName();
     const first = fullName.split(' ')[0];
@@ -43,7 +43,8 @@ connection.once('open', async () => {
   const studentData = await Student.insertMany(students);
 
   // Add courses to the collection and await the results
-  await Course.insertOne({
+  // insertOne -> create per class and my code.
+  await Course.create({
     courseName: 'UCLA',
     inPerson: false,
     students: [...studentData.map(({_id}) => _id)],
