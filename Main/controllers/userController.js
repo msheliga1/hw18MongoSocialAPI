@@ -1,5 +1,28 @@
 // MJS 3.31.24 - Modified from 18-28 mp courseController
 const { User, Thought } = require('../models');
+// Must be outside of export.  Aggregate function orig getting studentCount.
+// Also must 
+/* const friendCount = async () => {
+    // const numberOfStudents = await User.aggregate().count('studentCount');
+    return 3;
+  } */
+
+// Aggregate function for getting the overall grade using $avg
+const friendCount = async (userId) =>
+  Student.aggregate([
+    // only include the given user by using $match
+    { $match: { _id: new ObjectId(userId) } },
+    {
+      $unwind: '$assignments',
+    },
+    {
+      $group: {
+        _id: new ObjectId(userId),
+        // overallGrade: { $avg: '$assignments.score' },
+        overallGrade: "3",
+      },
+    },
+  ]);
 
 module.exports = {
   // Get all users
@@ -20,7 +43,12 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: 'No user with that ID' });
       }
+      // Mimick what student controller does
+      // res.json({ user,
+      //   friendCount: await friendCount(req.params.userId),
+      // });
 
+      // Made friendCouont a virtual - much easier since not an aggregate.
       res.json(user);
     } catch (err) {
       res.status(500).json(err);

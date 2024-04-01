@@ -53,7 +53,7 @@ connection.once('open', async () => {
   // insertOne -> create per class and my code.
   const users = await User.create({
     userName: 'MJS',
-    email: 'm@m.com',
+    email: 'm@m.com',  // validator rejected m@m.m.  Good.
     thoughts: [...thoughtData.map(({_id}) => _id)],
   });
 

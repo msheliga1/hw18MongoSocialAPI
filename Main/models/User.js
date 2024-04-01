@@ -18,24 +18,34 @@ const userSchema = new Schema(
       required: true,
       validate: [ isEmail, 'Invalid email address' ]
     },
-    startDate: {
-      type: Date,
-      default: Date.now(),
-    },
     thoughts: [
       {
         type: Schema.Types.ObjectId,
         ref: 'thought',
       },
     ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+      },
+    ],
   },
-  {
-    toJSON: {
-      virtuals: true,
-    },
+  { // Per Act 18-22. Mongoose has two Schema options to transform Objects after querying MongoDb: toJSON and toObject.
+    // Indicate that we want virtuals to be included with our response, overriding the default behavior
+    toJSON: { virtuals: true, },
     id: false,
   }
 );
+
+// Per Act 18-21 Post model.Create a virtual property `friendCount` that gets the amount of friends per user
+userSchema.virtual('friendCount').get(function () {
+  return this.friends.length;
+});
+
+userSchema.virtual('thoughtCount').get(function () {
+  return this.thoughts.length;
+});
 
 const User = model('user', userSchema);
 
