@@ -1,6 +1,7 @@
+// MJS 3.31.24. From mp18-28 course-student-assignment => user-thought-reaction
 const connection = require('../config/connection');
 const { User, Thought } = require('../models');
-const { getRandomName, getRandomAssignments } = require('./data');
+const { getRandomName, getRandomReactions } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -21,10 +22,10 @@ connection.once('open', async () => {
   // Create empty array to hold the thoughts
   const thoughts = [];
 
-  // Loop 20 times -- add thoughts to the thoughts array
+  // Loop x times -- add thoughts to the thoughts array
   for (let i = 0; i < 3; i++) {
     // Get some random assignment objects using a helper function that we imported from ./data
-    const assignments = getRandomAssignments(4);
+    const reactions = getRandomReactions(3);
 
     const fullName = getRandomName();
     const first = fullName.split(' ')[0];
@@ -35,7 +36,7 @@ connection.once('open', async () => {
       first,
       last,
       github,
-      assignments,
+      reactions,
     });
   }
 
@@ -45,7 +46,7 @@ connection.once('open', async () => {
   // Add users to the collection and await the results
   // insertOne -> create per class and my code.
   await User.create({
-    userName: 'UCLA',
+    userName: 'MJS',
     inPerson: false,
     thoughts: [...thoughtData.map(({_id}) => _id)],
   });
