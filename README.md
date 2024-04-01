@@ -119,7 +119,7 @@ Thought
 Reaction (SCHEMA ONLY)
     reactionId: Mongoose's ObjectId data type. 
                 Default value is new ObjectId
-    reactionBody String Required 280 character maximum
+    reactionBody String Required 280 character max
     username String Required
     createdAt: Date default value is current timestamp
                 Getter method to format the timestamp on query
