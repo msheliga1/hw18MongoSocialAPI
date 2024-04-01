@@ -45,20 +45,20 @@ connection.once('open', async () => {
     });
   }
 
-  const studentData = await Student.insertMany(thoughts);
   // console.log("Thoughts are ", thoughts); 
   // Add thoughts to the collection and await the results. insertMany is mongoose method
   const thoughtData = await Thought.insertMany(thoughts);
 
   // Add users to the collection and await the results
   // insertOne -> create per class and my code.
-  await User.create({
+  const users = await User.create({
     userName: 'MJS',
     inPerson: false,
     thoughts: [...thoughtData.map(({_id}) => _id)],
   });
 
   // Log out the seed data to indicate what should appear in the database
+  console.log(JSON.stringify(users)); // Without JSON.stringify - Unreadable.  Likely non-json
   console.table(thoughts);
   console.info('Seeding User->Thought complete! 🌱');
   process.exit(0);
