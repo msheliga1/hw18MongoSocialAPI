@@ -37,9 +37,11 @@ connection.once('open', async () => {
     const last = fullName.split(' ')[1];
     const github = `${first}${Math.floor(Math.random() * (99 - 18 + 1) + 18)}`;
     const thoughtText =  getThoughtText(i);
+    const username = "MJS";  // hardcode for now
 
     thoughts.push({
       thoughtText, 
+      username, 
       reactions,
     });
   }
@@ -51,7 +53,7 @@ connection.once('open', async () => {
   // Add users to the collection and await the results
   // insertOne -> create per class and my code.
   const users = await User.create({
-    userName: 'MJS',
+    username: 'MJS',
     email: 'm@m.com',  // validator rejected m@m.m.  Good.
     thoughts: [...thoughtData.map(({_id}) => _id)],
   });
