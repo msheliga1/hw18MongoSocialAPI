@@ -7,7 +7,6 @@ const names = [
   'Coollastname',
   'Courtney',
   'Clark',
-  'Jared',
   'Grace',
   'Kelsey',
   'Alex',
@@ -26,11 +25,9 @@ const appDescriptions = [
   'Hello world',
   'Stupid Social Media App',
   'Email',
-  'Compass',
   'Firefox',
   'Running app',
   'Cooking app',
-  'Poker',
 ];
 
 // Get a random item given an array
@@ -54,7 +51,7 @@ const getRandomAssignments = (int) => {
   return results;
 };
 
-// Function to generate random reactions that we can add to student object.
+// Function to generate random reactions that we can add to thought (social media post) object.
 const getRandomReactions = (int) => {
   const results = [];
   for (let i = 0; i < int; i++) {

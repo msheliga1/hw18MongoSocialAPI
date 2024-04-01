@@ -1,6 +1,5 @@
-// MJS 3.31.24 - Modified from mp14-28 Student.js
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction');
+// const assignmentSchema = require('./Assignment');
 
 // Schema to create Thought model
 const thoughtSchema = new Schema(
@@ -20,7 +19,7 @@ const thoughtSchema = new Schema(
       required: true,
       max_length: 50,
     },
-    reactions: [reactionSchema],
+    // assignments: [assignmentSchema],
   },
   {
     toJSON: {
