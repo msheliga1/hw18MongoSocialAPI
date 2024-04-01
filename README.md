@@ -57,7 +57,7 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
             - If refspec error, be sure you changed master to main.
 
     Create a nice long READ.md file!!  (Modify prior projects.)   
-    Determine worrking mp1428 folder: 
+    Determine working mp1428 folder: 
         Read the readme.  Found new code in Main. Found my code in Develop (sounds simple, but took PITA while.)
     NPM: Do "npm init --y" BEFORE "npm install" to avoide ENOENT err.
          Do "npm install" (or "nmp i")
@@ -73,6 +73,8 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
     Try running new code; 
         npm i, npm run seed (had to correct insertOne to create), and npm run dev all worked. 
 
+    Understand new models. 
+
     Commit and push files back to gitHub/branch. (For multi-programming: Issue pull request, approve, merge).  
     Deploy code (Settings...CodeAndAnimation->Pages on left, GitHub Pages->Branch->main, save)  
         - Deployed code name always msheliga1/github.io/RepoName !!  
@@ -82,28 +84,80 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
 ## Tools and Technologies Used   
     Github - Branches not needed, but could use.   
         - GitIgnore to keep NPM libraries out of gitHub repo.   
-    GIST - A totally foreign way of sharing info such as:   
-        - code snippets  
-        - tutorials   
-        - directions : WOULDN"T DIRECTIONS FOR THIS PROJECT BE GREAT.   
-        - other public or private info of your choosing.  
-    Location: My gists are at: https://gist.github.com/msheliga1 . 
-        - If there is an easy way to go from your github home page to 
-            your gists, NOT A ****ing person thought to include this info ANYWHERE (easy to find.)
-        - Yet another thing neither GitHub nor URI tells you!!!   
-    Regex - Regular Expressions are a commoon CS way of searching.   
- 
+    NPM - Node package manager
+    MongoDB - No-SQL database
+    Mongoose - ORM for MongoDB  
 
 ## Acceptance Criteria   
 -----------------------   
 Tutorial with TOC, links and descriptions, using GIST.   
 
-Regex Tutorial
-open the tutorial => see 
-    a descriptive title and introductory paragraph explaining the purpose of the tutorial, 
-    a summary describing the regex featured in the tutorial, 
-    a table of contents linking to different sections that break down each component of the regex and explain what it does, and a section about the author with a link to the author’s GitHub profile
-click on the links in the table of contents => taken to the corresponding sections of the tutorial
-Each section of the tutorial: Has a detailed explanation of what a specific component of the regex does
-End of the tutorial: has a section about the author and a link to the author’s GitHub profile
+Social network API. 
+Server started, Mongoose models are synced to the MongoDB database
+API GET routes in Insomnia for users and thoughts. Data displayed in a formatted JSON
+API POST, PUT, and DELETE routes, create, update, and delete users and thoughts in my database
+API POST and DELETE routes create and delete reactions to thoughts 
+""                  add and remove friends to a user’s friend list
 
+## Data Structure (Models)  
+----------------------------  
+User has many thoughts which have many reactions. Users also have many friends.
+User
+    username: String Unique Required Trimmed
+    email: String Required Unique validated email address (look into Mongoose's matching validation)
+    thoughts: Array of _id values referencing the Thought model
+    friends: Array of _id values referencing the User model (self-reference)
+    Schema Settings virtual: friendCount: length of the user's friends array field.
+Thought
+    thoughtText: String Required Must [1 - 280] characters
+    createdAt:  Date default value is current timestamp
+                Getter method to format the timestamp on query
+    username: String Required
+    reactions (These are like replies)
+        Array of nested documents created with the reactionSchema
+    Schema Setting virtual: reactionCount: length of the thought's reactions array field.
+Reaction (SCHEMA ONLY)
+    reactionId: Mongoose's ObjectId data type. 
+                Default value is new ObjectId
+    reactionBody String Required 280 character maximum
+    username String Required
+    createdAt: Date default value is current timestamp
+                Getter method to format the timestamp on query
+
+    Schema Settings - This will not be a model, but rather will be used as 
+        the reaction field's subdocument schema in the Thought model.
+
+API Routes
+/api/users
+    GET all users
+    GET a single user by its _id and populated thought and friend data
+    POST a new user:
+    // example data
+    {
+      "username": "lernantino",
+      "email": "lernantino@gmail.com"
+    }
+    PUT to update a user by its _id
+    DELETE to remove user by its _id
+BONUS: Remove a user's associated thoughts when deleted.
+
+/api/users/:userId/friends/:friendId
+    POST to add a new friend to a user's friend list
+    DELETE to remove a friend from a user's friend list
+
+/api/thoughts
+    GET to get all thoughts
+    GET to get a single thought by its _id
+    POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)
+    // example data
+    {
+  "thoughtText": "Here's a cool thought...",
+  "username": "lernantino",
+  "userId": "5edff358a0fcb779aa7b118b"
+    }
+    PUT to update a thought by its _id
+    DELETE to remove a thought by its _id
+
+/api/thoughts/:thoughtId/reactions
+    POST to create a reaction stored in a single thought's reactions array field
+    DELETE to pull and remove a reaction by the reaction's reactionId value
