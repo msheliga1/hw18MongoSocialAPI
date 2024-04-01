@@ -1,25 +1,26 @@
 // MJS 3.31.24 - From mp14-28 Course schema.
 const { Schema, model } = require('mongoose');
+const { isEmail } = require('validator'); 
+// import { isEmail } from 'validator';
 
 // Schema to create a user model
 const userSchema = new Schema(
   {
     userName: {
       type: String,
+      unique: true, 
       required: true,
+      trim: true, 
     },
-    inPerson: {
-      type: Boolean,
-      default: true,
+    email: {
+      type: String,
+      unique: true, 
+      required: true,
+      validate: [ isEmail, 'Invalid email address' ]
     },
     startDate: {
       type: Date,
       default: Date.now(),
-    },
-    endDate: {
-      type: Date,
-      // Sets a default value of 12 weeks from now
-      default: () => new Date(+new Date() + 84 * 24 * 60 * 60 * 1000),
     },
     thoughts: [
       {
