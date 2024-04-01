@@ -22,9 +22,9 @@ connection.once('open', async () => {
   const students = [];
 
   // Loop 20 times -- add students to the students array
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 3; i++) {
     // Get some random assignment objects using a helper function that we imported from ./data
-    const assignments = getRandomAssignments(4);
+    const assignments = getRandomAssignments(3);
 
     const fullName = getRandomName();
     const first = fullName.split(' ')[0];
