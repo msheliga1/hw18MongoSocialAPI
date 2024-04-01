@@ -53,13 +53,13 @@ connection.once('open', async () => {
   // insertOne -> create per class and my code.
   const users = await User.create({
     userName: 'MJS',
-    inPerson: false,
+    email: 'm@m.com',
     thoughts: [...thoughtData.map(({_id}) => _id)],
   });
 
   // Log out the seed data to indicate what should appear in the database
   console.log(JSON.stringify(users)); // Without JSON.stringify - Unreadable.  Likely non-json
   console.table(thoughts);
-  console.info('Seeding User->Thought complete! 🌱');
+  console.info('Seeding User->Thought-Reaction data complete! 🌱');
   process.exit(0);
 }); // end connection.once
