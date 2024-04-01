@@ -1,7 +1,7 @@
 // MJS 3.31.24. From mp18-28 course-student-assignment => user-thought-reaction
 const connection = require('../config/connection');
 const { User, Thought, Student } = require('../models');
-const { getRandomName, getRandomAssignments, getRandomReactions } = require('./data');
+const { getRandomName, getRandomAssignments, getRandomReactions, getThoughtText } = require('./data');
 
 connection.on('error', (err) => err);
 console.log("Very Top Seed2 Student is ", Student); 
@@ -36,11 +36,10 @@ connection.once('open', async () => {
     const first = fullName.split(' ')[0];
     const last = fullName.split(' ')[1];
     const github = `${first}${Math.floor(Math.random() * (99 - 18 + 1) + 18)}`;
+    const thoughtText =  getThoughtText(i);
 
     thoughts.push({
-      first,
-      last,
-      github,
+      thoughtText, 
       reactions,
     });
   }
