@@ -29,7 +29,7 @@ const thoughtSchema = new Schema(
     toJSON: { getters: true, virtuals: true, },
     // toJSON: { virtuals: true, },
   }
-);
+); // end ThoughSchema
 
 // createdAt should only return the date, not the time
 function prettyDate(createdAt) {

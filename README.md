@@ -108,7 +108,7 @@ User
     thoughts: Array of _id values referencing the Thought model
     friends: Array of _id values referencing the User model (self-reference)
     Schema Settings virtual: friendCount: length of the user's friends array field.
-Thought
+Thought  
     thoughtText: String Required Must [1 - 280] characters
     createdAt:  Date default value is current timestamp
                 Getter method to format the timestamp on query
@@ -116,14 +116,13 @@ Thought
     reactions (These are like replies)
         Array of nested documents created with the reactionSchema
     Schema Setting virtual: reactionCount: length of the thought's reactions array field.
-Reaction (SCHEMA ONLY)
+Reaction (SCHEMA ONLY)  
     reactionId: Mongoose's ObjectId data type. 
                 Default value is new ObjectId
     reactionBody String Required 280 character max
     username String Required
     createdAt: Date default value is current timestamp
-                Getter method to format the timestamp on query
-
+               Getter method to format the timestamp on query
     Schema Settings - This will not be a model, but rather will be used as 
         the reaction field's subdocument schema in the Thought model.
 
@@ -132,11 +131,9 @@ API Routes
     GET all users
     GET a single user by its _id and populated thought and friend data
     POST a new user:
-    // example data
-    {
+    {  // example data
       "username": "lernantino",
-      "email": "lernantino@gmail.com"
-    }
+      "email": "lernantino@gmail.com" }
     PUT to update a user by its _id
     DELETE to remove user by its _id
 BONUS: Remove a user's associated thoughts when deleted.
@@ -149,12 +146,10 @@ BONUS: Remove a user's associated thoughts when deleted.
     GET to get all thoughts
     GET to get a single thought by its _id
     POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)
-    // example data
-    {
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
-    }
+    {  // example data
+        "thoughtText": "Here's a cool thought...",
+        "username": "lernantino",
+        "userId": "5edff358a0fcb779aa7b118b" }
     PUT to update a thought by its _id
     DELETE to remove a thought by its _id
 

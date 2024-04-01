@@ -36,7 +36,7 @@ const userSchema = new Schema(
     toJSON: { virtuals: true, },
     id: false,
   }
-);
+); // end userSchema
 
 // Per Act 18-21 Post model.Create a virtual property `friendCount` that gets the amount of friends per user
 userSchema.virtual('friendCount').get(function () {

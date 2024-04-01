@@ -4,37 +4,22 @@ const { ObjectId } = require('mongoose').Types;
 const { Thought, User } = require('../models');
 
 // Aggregate function to get the number of thoughts overall
-const headCount = async () => {
+const thoughtCount = async () => {
   const numberOfThoughts = await Thought.aggregate()
     .count('thoughtCount');
   return numberOfThoughts;
-}
-
-// Aggregate function for getting the overall grade using $avg
-const grade = async (thoughtId) =>
-  Thought.aggregate([
-    // only include the given thought by using $match
-    { $match: { _id: new ObjectId(thoughtId) } },
-    {
-      $unwind: '$reactions',
-    },
-    {
-      $group: {
-        _id: new ObjectId(thoughtId),
-        overallGrade: { $avg: '$reactions.score' },
-      },
-    },
-  ]);
+}  // end thoughtCount 
 
 module.exports = {
   // Get all thoughts
   async getThoughts(req, res) {
     try {
+      console.log("Getting all thoughts ... "); 
       const thoughts = await Thought.find();
 
       const thoughtObj = {
         thoughts,
-        headCount: await headCount(),
+        // headCount: await headCount(),
       };
 
       res.json(thoughtObj);
@@ -55,7 +40,7 @@ module.exports = {
 
       res.json({
         thought,
-        grade: await grade(req.params.thoughtId),
+        // grade: await grade(req.params.thoughtId),
       });
     } catch (err) {
       console.log(err);
@@ -99,6 +84,9 @@ module.exports = {
     }
   },
 
+  // ========== REACTIONS ==================
+  // Add and Remove Methods
+  
   // Add an reaction to a thought
   async addReaction(req, res) {
     console.log('You are adding an reaction');

@@ -1,5 +1,6 @@
 // MJS 3.31.24 - from URI mp 18-28.  A reaction is really a comment on a post. 
 const { Schema, Types } = require('mongoose');
+var moment = require('moment');  // For date formatting getter.
 
 const reactionSchema = new Schema(
   {
@@ -7,21 +8,17 @@ const reactionSchema = new Schema(
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
     },
-    reactionName: {
+    reactionBody: {
       type: String,
       required: true,
-      maxlength: 50,
-      minlength: 4,
-      default: 'Unnamed reaction',
-    },
-    score: {
-      type: Number,
-      required: true,
-      default: () => Math.floor(Math.random() * (100 - 70 + 1) + 70),
+      minlength: 1,
+      maxlength: 280,
+      // default: 'Unnamed reaction',
     },
     createdAt: {
       type: Date,
       default: Date.now,
+      get: prettyDate, 
     },
   },
   {
@@ -30,6 +27,15 @@ const reactionSchema = new Schema(
     },
     id: false,
   }
-);
+);  // end reactionSchema
+
+// createdAt should return decently formatted date-time
+function prettyDate(createdAt) {
+  // return "10-26-1967";  // cant easily get text inside of format
+  const formatted = moment(createdAt).format('MM-DD-YYYY hh:ss a');
+  return formatted; 
+}
+
+// Do NOT actually build this model. per assignment. 
 
 module.exports = reactionSchema;
