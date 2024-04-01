@@ -99,8 +99,8 @@ API POST, PUT, and DELETE routes, create, update, and delete users and thoughts 
 API POST and DELETE routes create and delete reactions to thoughts 
 ""                  add and remove friends to a user’s friend list
 
-## Data Structure (Models)  
-----------------------------  
+## Models (Not Tables) and Data Relationships.  
+------------------------------------------------
 User has many thoughts which have many reactions. Users also have many friends.
 User
     username: String Unique Required Trimmed
