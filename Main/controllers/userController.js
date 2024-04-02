@@ -79,6 +79,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
   // Update a user
   async updateUser(req, res) {
     try {
@@ -97,4 +98,29 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+  // Friend Routes 
+  // ---------------------------- 
+
+  // Add a friend to a user
+  async addFriend(req, res) {
+    console.log('You are adding a friend');
+    console.log(req.body);
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { friends: req.body } },
+        { runValidators: true, new: true }
+      );
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: 'No user found with that ID :(' });
+      }
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }, // end addFriend (to a user)
+
 };
