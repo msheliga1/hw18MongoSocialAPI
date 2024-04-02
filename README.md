@@ -5,7 +5,8 @@ Starter Code: Started with URI Class Part 18. Class-Student-Assignment 18-28 Min
 
 ## Link to Repo, Screenshot(s) and/or Video(s)  
 Link to GitHub Repo: https://github.com/msheliga1/hw18MongoSocialAPI     
-Link to Video on Google Drive: https://drive.google.com/file/d/15i1SyN7UNKhFnAYD3HnOhx8d3yip52xh/view   
+Link to Video on Google Drive: 
+https://drive.google.com/file/d/1jcrSLjZJ3evW8Ss2wuIrIy4JPc4SDk_M/view 
 <!---  Link to deployed github.io site. https://msheliga1.github.io/uriHW9NodeReadmeGen --->  
 
 [Link to Acceptance Criteria ](#acceptance-criteria)   
