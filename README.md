@@ -4,8 +4,8 @@ Michael Sheliga - This repo is for the University of Richmond (URI) coding bootc
 Starter Code: Started with URI Class Part 18. Class-Student-Assignment 18-28 Mini=Project. 
 
 ## Link to Repo, Screenshot(s) and/or Video(s)  
-Link to GitHub Repo: https://github.com/msheliga1/uriHW17GistRegexTutor      
-<!-- Link to Video on Google Drive: https://drive.google.com/file/d/15i1SyN7UNKhFnAYD3HnOhx8d3yip52xh/view  -->  
+Link to GitHub Repo: https://github.com/msheliga1/hw18MongoSocialAPI     
+Link to Video on Google Drive: https://drive.google.com/file/d/15i1SyN7UNKhFnAYD3HnOhx8d3yip52xh/view   
 <!---  Link to deployed github.io site. https://msheliga1.github.io/uriHW9NodeReadmeGen --->  
 
 [Link to Acceptance Criteria ](#acceptance-criteria)   
