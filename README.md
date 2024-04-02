@@ -78,82 +78,84 @@ Use node, SQL and sequalize to create a back-end for an e-commerce site.
     Commit and push files back to gitHub/branch. (For multi-programming: Issue pull request, approve, merge).  
     Deploy code (Settings...CodeAndAnimation->Pages on left, GitHub Pages->Branch->main, save)  
         - Deployed code name always msheliga1/github.io/RepoName !!  
-    Make Sure it Works   
-    Insert Screencastify (Chrome) Video and/or Screenshot X2 of deployment into readme file. 
+    Make Sure it Works    
+    Insert Screencastify (Chrome) Video and/or Screenshot X2 of deployment into readme file.  
   
 ## Tools and Technologies Used   
-    Github - Branches not needed, but could use.   
-        - GitIgnore to keep NPM libraries out of gitHub repo.   
-    NPM - Node package manager
-    MongoDB - No-SQL database
-    Mongoose - ORM for MongoDB  
+    Github - Branches not needed, but could use.    
+        - GitIgnore to keep NPM libraries out of gitHub repo.    
+    NPM - Node package manager  
+    MongoDB - No-SQL database  
+    Mongoose - ORM for MongoDB   
+    moment - date/time routines including formatting.  
 
 ## Acceptance Criteria   
------------------------   
-Tutorial with TOC, links and descriptions, using GIST.   
-
-Social network API. 
-Server started, Mongoose models are synced to the MongoDB database
-API GET routes in Insomnia for users and thoughts. Data displayed in a formatted JSON
-API POST, PUT, and DELETE routes, create, update, and delete users and thoughts in my database
-API POST and DELETE routes create and delete reactions to thoughts 
-""                  add and remove friends to a user’s friend list
+-----------------------       
+Social network API (back-end routes returning JSON).   
+Server started, Mongoose models are synced to the MongoDB database  
+API GET routes in Insomnia for users and thoughts. Data displayed in a formatted JSON  
+API POST, PUT, and DELETE routes, create, update, and delete users and thoughts in my database  
+API POST and DELETE routes create and delete reactions to thoughts   
+""                  add and remove friends to a user’s friend list   
 
 ## Models (Not Tables) and Data Relationships.  
-------------------------------------------------
-User has many thoughts which have many reactions. Users also have many friends.
-User
-    username: String Unique Required Trimmed
-    email: String Required Unique validated email address (look into Mongoose's matching validation)
-    thoughts: Array of _id values referencing the Thought model
-    friends: Array of _id values referencing the User model (self-reference)
-    Schema Settings virtual: friendCount: length of the user's friends array field.
-Thought  
-    thoughtText: String Required Must [1 - 280] characters
-    createdAt:  Date default value is current timestamp
-                Getter method to format the timestamp on query
-    username: String Required
-    reactions (These are like replies)
-        Array of nested documents created with the reactionSchema
-    Schema Setting virtual: reactionCount: length of the thought's reactions array field.
-Reaction (SCHEMA ONLY)  
-    reactionId: Mongoose's ObjectId data type. 
-                Default value is new ObjectId
-    reactionBody String Required 280 character max
-    username String Required
-    createdAt: Date default value is current timestamp
-               Getter method to format the timestamp on query
-    Schema Settings - This will not be a model, but rather will be used as 
-        the reaction field's subdocument schema in the Thought model.
+------------------------------------------------  
+User has many thoughts which have many reactions. Users also have many friends.  
+User  
+    username: String Unique Required Trimmed  
+    email: String Required Unique validated email address (look into Mongoose's matching validation)  
+    thoughts: Array of _id values referencing the Thought model  
+    friends: Array of _id values referencing the User model (self-reference)  
+    Schema Settings virtual: friendCount: length of the user's friends array field.  
+Thought    
+    thoughtText: String Required Must [1 - 280] characters  
+    createdAt:  Date default value is current timestamp  
+                Getter method to format the timestamp on query  
+    username: String Required  
+    reactions (These are like comments)  
+        Array of nested documents created with the reactionSchema  
+    Schema Setting virtual: reactionCount: length of the thought's reactions array field.  
+Reaction (SCHEMA ONLY)   
+    reactionId: Mongoose's ObjectId data type.  
+                Default value is new ObjectId  
+    reactionBody String Required 280 character max  
+    username String Required  
+    createdAt: Date default value is current timestamp  
+               Getter method to format the timestamp on query  
+    Schema Settings - This will not be a model, but rather will be used as  
+        the reaction field's subdocument schema in the Thought model.  
 
-API Routes
-/api/users
-    GET all users
-    GET a single user by its _id and populated thought and friend data
-    POST a new user:
-    {  // example data
-      "username": "lernantino",
-      "email": "lernantino@gmail.com" }
-    PUT to update a user by its _id
-    DELETE to remove user by its _id
-BONUS: Remove a user's associated thoughts when deleted.
+API Routes  
+------------  
+/api/users  
+    GET all users  
+    GET a single user by its _id and populated thought and friend data  
+    POST a new user:  
+    {  // example data  
+      "username": "lernantino",  
+      "email": "lernantino@gmail.com" }  
+    PUT to update a user by its _id  
+    DELETE to remove user by its _id  
+BONUS: Remove a user's associated thoughts when deleted.  
 
-/api/users/:userId/friends/:friendId
-    POST to add a new friend to a user's friend list
-    DELETE to remove a friend from a user's friend list
+/api/users/:userId/friends/:friendId  
+    POST to add a new friend to a user's friend list  
+    DELETE to remove a friend from a user's friend list  
 
-/api/thoughts
-    GET all thoughts
-    GET a single thought by its _id
-    POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)
-    {  // example data
-        "thoughtText": "Here's a cool thought...",
-        "username": "lernantino",
-        "userId": "5edff358a0fcb779aa7b118b" }
-    PUT to update a thought by its _id
-    DELETE to remove a thought by its _id
-
-/api/thoughts/:thoughtId/reactions
-    POST to create a reaction stored in a single thought's reactions array field
-/api/thoughts/:thoughtId/reactions/:reactionId
-    DELETE to pull and remove a reaction by the reaction's reactionId value
+/api/thoughts  
+    GET all thoughts  
+    GET a single thought by its _id  
+    POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)  
+    {  // example data  
+        "thoughtText": "Here's a cool thought...",  
+        "username": "lernantino",  
+        "userId": "5edff358a0fcb779aa7b118b" }  
+    PUT to update a thought by its _id  
+    DELETE to remove a thought by its _id  
+  
+/api/thoughts/:thoughtId/reactions  
+    POST to create a reaction stored in a single thought's reactions array field  
+/api/thoughts/:thoughtId/reactions/:reactionId  
+    DELETE to pull and remove a reaction by the reaction's reactionId value  
+BONUS Route/ /api/thoughts/:thoughtId/reactions/ 
+    GET all reactions for a thought  
