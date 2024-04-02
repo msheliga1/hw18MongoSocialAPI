@@ -33,8 +33,8 @@ module.exports = {
     } catch (err) {
       res.status(500).json(err);
     }
-  },
-  // Get a user
+  }, // end getAll Users
+  // Get one user
   async getSingleUser(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId })
@@ -53,7 +53,7 @@ module.exports = {
     } catch (err) {
       res.status(500).json(err);
     }
-  },
+  }, // end get one User
   // Create a user
   async createUser(req, res) {
     try {

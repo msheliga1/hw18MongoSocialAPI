@@ -43,7 +43,7 @@ const getRandomReactions = (int) => {
   for (let i = 0; i < int; i++) {
     results.push({
       reactionBody: getRandomArrItem(reactions),  
-      username: "MJS",   // hardcode for now
+      username: "MJSTwo",   // hardcode for now
       // score: Math.floor(Math.random() * (99 - 70 + 1) + 70),
     });
   }
@@ -56,7 +56,7 @@ const getReactions = (int) => {
   for (let i = 0; i < int; i++) {
     results.push({
       reactionBody: reactions[int],
-      username: "MJS",   // hardcode for now
+      username: "MJSTwo",   // hardcode for now
     });
   }
   return results;

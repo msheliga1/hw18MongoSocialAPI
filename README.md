@@ -143,8 +143,8 @@ BONUS: Remove a user's associated thoughts when deleted.
     DELETE to remove a friend from a user's friend list
 
 /api/thoughts
-    GET to get all thoughts
-    GET to get a single thought by its _id
+    GET all thoughts
+    GET a single thought by its _id
     POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)
     {  // example data
         "thoughtText": "Here's a cool thought...",
@@ -155,4 +155,5 @@ BONUS: Remove a user's associated thoughts when deleted.
 
 /api/thoughts/:thoughtId/reactions
     POST to create a reaction stored in a single thought's reactions array field
+/api/thoughts/:thoughtId/reactions/:reactionId
     DELETE to pull and remove a reaction by the reaction's reactionId value

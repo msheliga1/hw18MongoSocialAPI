@@ -15,6 +15,10 @@ const reactionSchema = new Schema(
       maxlength: 280,
       // default: 'Unnamed reaction',
     },
+    username: {  // best to check if user exists!
+      type: String,   
+      required: true,    
+    },
     createdAt: {
       type: Date,
       default: Date.now,
